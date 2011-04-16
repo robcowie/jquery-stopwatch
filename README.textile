@@ -1,0 +1,9 @@
+h1. Simple count-up jQuery plugin
+
+Copyright (c) 2011 Rob Cowie. Licensed under the MIT license.
+
+h1. Summary
+
+A jQuery plugin that renders a count-up clock from a defined start time. Supports start, stop, reset, and custom 'tick' event.
+
+See examples for usage.
