@@ -12,8 +12,16 @@
     }
     
     function formatMilliseconds(millis) {
-        var d = new Date(millis);
-        return pad2(d.getHours()) + ':' + pad2(d.getMinutes()) + ':' + pad2(d.getSeconds());
+        var x, seconds, minutes, hours;
+        x = millis / 1000;
+        seconds = Math.floor(x % 60);
+        x /= 60;
+        minutes = Math.floor(x % 60);
+        x /= 60;
+        hours = Math.floor(x % 24);
+        // x /= 24;
+        // days = Math.floor(x);
+        return [pad2(hours), pad2(minutes), pad2(seconds)].join(':');
     }
     
     var methods = {
