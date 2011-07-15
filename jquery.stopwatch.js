@@ -44,10 +44,12 @@
                     // Setup the stopwatch data
                     data = settings;
                     data.target = $this;
+                    data.elapsed = settings.startTime;
                     // create counter
                     data.incrementer = incrementer(data.startTime, data.updateInterval);
                     data.tick_function = function() {
                         var millis = data.incrementer();
+                        data.elapsed = millis;
                         data.target.trigger('tick.stopwatch', [millis]);
                         data.target.stopwatch('render', millis);
                     };
@@ -109,6 +111,7 @@
                 var $this = $(this);
                     data = $this.data('stopwatch');
                 data.incrementer = incrementer(data.startTime, data.updateInterval);
+                data.elapsed = data.startTime;
                 $this.data('stopwatch', data);
             });
         }
