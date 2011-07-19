@@ -51,7 +51,7 @@
                         var millis = data.incrementer();
                         data.elapsed = millis;
                         data.target.trigger('tick.stopwatch', [millis]);
-                        data.target.stopwatch('render', millis);
+                        data.target.stopwatch('render');
                     };
                     $this.data('stopwatch', data);
                 }
@@ -88,10 +88,10 @@
             })
         },
         
-        render: function(ct) {
+        render: function() {
             var $this = $(this),
                 data = $this.data('stopwatch');
-            $this.html(data.formatter(ct));
+            $this.html(data.formatter(data.elapsed));
         },
         
         toggle: function() {
