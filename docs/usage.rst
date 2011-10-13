@@ -1,5 +1,7 @@
 .. highlight:: javascript
 
+.. _usage:
+
 Some usage examples
 ===================
 

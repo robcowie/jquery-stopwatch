@@ -1,10 +1,14 @@
+.. highlight:: javascript
+
 Welcome to jQuery Stopwatch's documentation
 ===========================================
 
-Contents:
-=========
+An easy to use jquery plugin to render and control a stopwatch (count-up) clock.
 
-.. toctree::
-   :maxdepth: 1
+Starting a timer is as easy as
 
-   usage
+::
+
+    $('').stopwatch().stopwatch('start');
+
+See some more :ref:`usage examples<usage>`
