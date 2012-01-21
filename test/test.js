@@ -98,6 +98,18 @@ test("Elapsed time", function(){
     }, 2500);
 });
 
+test("Get time", function(){
+    var data = $elem.data('stopwatch');
+    equals($elem.stopwatch('getTime'), 0);
+    equals(data.elapsed, $elem.stopwatch('getTime'));
+    $elem.stopwatch('start');
+    stop();
+    setTimeout(function(){
+        equals($elem.stopwatch('getTime'), 2000);
+        start();
+    }, 2500);
+});
+
 
 
 module("Reset", {

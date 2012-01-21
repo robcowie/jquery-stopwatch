@@ -94,6 +94,12 @@
                 data = $this.data('stopwatch');
             $this.html(data.formatter(data.elapsed));
         },
+
+        getTime: function() {
+            var $this = $(this),
+                data = $this.data('stopwatch');
+            return data.elapsed;
+        },
         
         toggle: function() {
             return this.each(function() {
