@@ -1,6 +1,3 @@
-/*
-*/
-
 (function( $ ){
 
     function incrementer(ct, increment) {
@@ -10,8 +7,8 @@
     function pad2(number) {
          return (number < 10 ? '0' : '') + number;
     }
-    
-    function formatMilliseconds(millis) {
+
+    function defaultFormatMilliseconds(millis) {
         var x, seconds, minutes, hours;
         x = millis / 1000;
         seconds = Math.floor(x % 60);
@@ -23,17 +20,34 @@
         // days = Math.floor(x);
         return [pad2(hours), pad2(minutes), pad2(seconds)].join(':');
     }
-    
+
+    //NOTE: This is a the 'lazy func def' pattern described at http://michaux.ca/articles/lazy-function-definition-pattern
+    function formatMilliseconds(millis, data) {
+        // Use jintervals if available, else default formatter
+        var formatter;
+        if (typeof jintervals == 'function') {
+            formatter = function(millis, data){return jintervals(millis/1000, data.format);};
+        } else {
+            formatter = defaultFormatMilliseconds;
+        }
+        formatMilliseconds = function(millis, data) {
+            return formatter(millis, data);
+        };
+        return formatMilliseconds(millis, data);
+    }
+
     var methods = {
         
         init: function(options) {
-            var settings = {
+            var defaults = {
                 updateInterval: 1000,
                 startTime: 0,
+                format: '{HH}:{MM}:{SS}',
                 formatter: formatMilliseconds
             };
             
-            if (options) { $.extend(settings, options); }
+            // if (options) { $.extend(settings, options); }
+            var settings = $.extend({}, defaults, options);
             
             return this.each(function() {
                 var $this = $(this),
@@ -92,7 +106,7 @@
         render: function() {
             var $this = $(this),
                 data = $this.data('stopwatch');
-            $this.html(data.formatter(data.elapsed));
+            $this.html(data.formatter(data.elapsed, data));
         },
 
         getTime: function() {

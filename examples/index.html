@@ -12,6 +12,7 @@
     <title>jquery.stopwatch.js demo</title>
     <meta name="description" content="jquery.stopwatch.js demo">
     <meta name="author" content="Rob Cowie">
+    <script src="https://raw.github.com/nene/jintervals/master/jintervals.js"></script>
     
     <style>
         h1 {
@@ -37,7 +38,7 @@
         }
         .demo {
             margin-bottom: 10px;
-            width: 100px;
+            width: 150px;
             border-bottom-left-radius: 4px 4px;
             border-bottom-right-radius: 4px 4px;
             border-top-left-radius: 4px 4px;
@@ -80,6 +81,10 @@
                 <div class="label">2 second update interval</div>
                 <div id="demo5" class="demo">00:00:00</div>
             </div>
+            <div class="example">
+                <div class="label">Custom format using <a href="https://github.com/nene/jintervals">jintervals</a></div>
+                <div id="demo6" class="demo">00:00:00</div>
+            </div>
         </div>
         
         <footer></footer>
@@ -96,8 +101,9 @@
             $('#demo3').stopwatch().click(function(){ 
                 $(this).stopwatch('reset');
             }).stopwatch('start');
-            $('#demo4').stopwatch({startTime:10000000}).stopwatch('start');
-            $('#demo5').stopwatch({updateInterval:2000}).stopwatch('start');
+            $('#demo4').stopwatch({startTime: 10000000}).stopwatch('start');
+            $('#demo5').stopwatch({updateInterval: 2000}).stopwatch('start');
+            $('#demo6').stopwatch({format: '{Minutes} and {s.}'}).stopwatch('start');
         });
     </script>
 </body>

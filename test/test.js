@@ -112,6 +112,24 @@ test("Get time", function(){
 
 
 
+module("Jintervals Formatting", {
+    setup: function(){
+        $elem = $(ELEM_SELECTOR);
+    },
+    teardown: function(){
+        $elem.stopwatch('destroy');
+    }
+});
+
+test("jsinterval formatting", function() {
+    var user_data = {startTime: 1000, format: '{MM}:{SS}'};
+    var data = $elem.stopwatch('init', user_data).data('stopwatch');
+    equals(data.formatter(data.elapsed, data), '00:01',
+        'Formatted output should be 00:01');
+});
+
+
+
 module("Reset", {
     setup: function(){
         $elem = $(ELEM_SELECTOR);
