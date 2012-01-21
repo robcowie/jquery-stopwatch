@@ -28,8 +28,8 @@
         
         init: function(options) {
             var settings = {
-                updateInterval: 1000, 
-                startTime: 0, 
+                updateInterval: 1000,
+                startTime: 0,
                 formatter: formatMilliseconds
             };
             
@@ -66,7 +66,7 @@
                     data = $this.data('stopwatch');
                 // Mark as active
                 data.active = true;
-                data.timerID = setInterval(data.tick_function, data.updateInterval)
+                data.timerID = setInterval(data.tick_function, data.updateInterval);
                 $this.data('stopwatch', data);
             });
         },
@@ -85,8 +85,8 @@
             return this.each(function(){
                 var $this = $(this),
                     data = $this.data('stopwatch');
-                $this.stopwatch('stop').unbind('.stopwatch').removeData('stopwatch');                
-            })
+                $this.stopwatch('stop').unbind('.stopwatch').removeData('stopwatch');
+            });
         },
         
         render: function() {
@@ -105,7 +105,7 @@
                     $this.stopwatch('start');
                 }
             });
-        }, 
+        },
         
         reset: function() {
             return this.each(function() {
@@ -127,7 +127,7 @@
             return methods.init.apply(this, arguments);
         } else {
             $.error( 'Method ' +  method + ' does not exist on jQuery.stopwatch' );
-        } 
+        }
     };
 
 })( jQuery );

@@ -1,6 +1,6 @@
 h1. Simple count-up jQuery plugin
 
-Copyright (c) 2011 Rob Cowie. Licensed under the MIT license.
+Copyright (c) 2012 Rob Cowie. Licensed under the MIT license.
 
 h1. Summary
 

@@ -5,7 +5,7 @@ var ELEM_SELECTOR = '#stopwatch';
 module("Create & Destroy", {
     setup: function(){
         $elem = $(ELEM_SELECTOR);
-    }, 
+    },
     teardown: function(){
         $elem.removeData();
     }
@@ -19,9 +19,9 @@ test("Basic initialise", function() {
 
 test("Default data", function() {
     var data = $elem.stopwatch('init').data('stopwatch');
-    equals(data.updateInterval, 1000, 
+    equals(data.updateInterval, 1000,
         'Default update interval should be 1000, not ' + data.updateInterval);
-    equals(data.startTime, 0, 
+    equals(data.startTime, 0,
         'Default start time offset should be 0, not ' + data.startTime);
     equals(data.active, false);
 });
@@ -29,9 +29,9 @@ test("Default data", function() {
 test("User provided data", function() {
     var user_data = {startTime: 1000, updateInterval: 2000};
     var data = $elem.stopwatch('init', user_data).data('stopwatch');
-    equals(data.startTime, user_data.startTime, 
+    equals(data.startTime, user_data.startTime,
         'Start time offset should equal ' + user_data.startTime + ' not ' + data.startTime);
-    equals(data.updateInterval, user_data.updateInterval, 
+    equals(data.updateInterval, user_data.updateInterval,
         'Update interval should equal ' + user_data.updateInterval + ' not ' + data.updateInterval);
 });
 
@@ -46,7 +46,7 @@ module("Start & Stop", {
     setup: function(){
         $elem = $(ELEM_SELECTOR);
         $elem.stopwatch('init');
-    }, 
+    },
     teardown: function(){
         $elem.stopwatch('destroy');
     }
@@ -76,7 +76,7 @@ module("Standard Operation", {
     setup: function(){
         $elem = $(ELEM_SELECTOR);
         $elem.stopwatch('init');
-    }, 
+    },
     teardown: function(){
         $elem.stopwatch('destroy');
     }
@@ -104,7 +104,7 @@ module("Reset", {
     setup: function(){
         $elem = $(ELEM_SELECTOR);
         $elem.stopwatch('init');
-    }, 
+    },
     teardown: function(){
         $elem.removeData();
     }
@@ -118,7 +118,7 @@ test("from inactive", function(){
         $elem.stopwatch('reset');
         equals($elem.data('stopwatch').elapsed, $elem.data('stopwatch').startTime);
         start();
-    }, 2000)
+    }, 2000);
 });
 
 test("from active", function(){
@@ -129,7 +129,7 @@ test("from active", function(){
         $elem.stopwatch('stop');
         equals($elem.data('stopwatch').elapsed, $elem.data('stopwatch').startTime);
         start();
-    }, 2000)
+    }, 2000);
 });
 
 
@@ -137,7 +137,7 @@ test("from active", function(){
 module("Non-Standard Operation", {
     setup: function(){
         $elem = $(ELEM_SELECTOR);
-    }, 
+    },
     teardown: function(){
         $elem.stopwatch('destroy');
     }
