@@ -43,6 +43,7 @@
                 if (!data) {
                     // Setup the stopwatch data
                     data = settings;
+                    data.active = false;
                     data.target = $this;
                     data.elapsed = settings.startTime;
                     // create counter
