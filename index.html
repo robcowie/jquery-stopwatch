@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Jquery-stopwatch by robcowie</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Jquery-stopwatch</h1>
+<p>A jQuery plugin that renders a count-up clock from a defined start time</p>
+        <p class="view"><a href="https://github.com/robcowie/jquery-stopwatch">View the Project on GitHub <small>robcowie/jquery-stopwatch</small></a></p>
+        <ul>
+          <li><a href="https://github.com/robcowie/jquery-stopwatch/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/robcowie/jquery-stopwatch/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/robcowie/jquery-stopwatch">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>Simple count-up jQuery plugin</h1>
+
+<h2>Summary</h2>
+
+<p>A jQuery plugin that renders a count-up clock from a defined start time. Supports <code>start</code>, <code>stop</code>, <code>toggle</code>, <code>reset</code>, and custom 'tick' event.</p>
+
+<h2>Usage</h2>
+
+<ul>
+<li>Initialise and start a default timer</li>
+</ul><div class="highlight">
+<pre><span class="nx">$</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">stopwatch</span><span class="p">().</span><span class="nx">stopwatch</span><span class="p">(</span><span class="s1">'start'</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<ul>
+<li>Initialise and bind start/stop to click</li>
+</ul><div class="highlight">
+<pre><span class="nx">$</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">stopwatch</span><span class="p">().</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">stopwatch</span><span class="p">(</span><span class="s1">'toggle'</span><span class="p">)</span>
+<span class="p">})</span>
+</pre>
+</div>
+
+
+<ul>
+<li>Bind to <code>tick</code> event and reset when 10 seconds has elapsed</li>
+</ul><div class="highlight">
+<pre><span class="nx">$</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">stopwatch</span><span class="p">().</span><span class="nx">bind</span><span class="p">(</span><span class="s1">'tick.stopwatch'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">elapsed</span><span class="p">){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">elapsed</span> <span class="o">&gt;=</span> <span class="mi">10000</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">stopwatch</span><span class="p">(</span><span class="s1">'reset'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}).</span><span class="nx">stopwatch</span><span class="p">(</span><span class="s1">'start'</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<ul>
+<li>Start at non-zero elapsed time</li>
+</ul><div class="highlight">
+<pre><span class="nx">$</span><span class="p">(</span><span class="s1">''</span><span class="p">).</span><span class="nx">stopwatch</span><span class="p">({</span><span class="nx">startTime</span><span class="o">:</span> <span class="mi">10000000</span><span class="p">}).</span><span class="nx">stopwatch</span><span class="p">(</span><span class="s1">'start'</span><span class="p">)</span>
+</pre>
+</div>
+
+
+<h2>Formatting</h2>
+
+<p>Provided by the <a href="https://github.com/nene/jintervals">jintervals</a> lib. If you don't 
+include this library, the default output format <code>HH:MM:SS</code> is used.</p>
+
+<h3>Formats</h3>
+
+<p>Pass a format pattern as the <code>format</code> option. jsintervals provides a rich syntax for formatting 
+time intervals, perhaps best illustrated by some examples. </p>
+
+<div class="highlight">
+<pre><span class="s1">'{MM}:{ss}'</span> <span class="o">--&gt;</span> <span class="mi">01</span><span class="o">:</span><span class="mi">05</span>
+<span class="s1">'{MMM}:{ss}'</span> <span class="o">--&gt;</span> <span class="mi">001</span><span class="o">:</span><span class="mi">05</span>
+<span class="s1">'{M}m, {s}s'</span> <span class="o">--&gt;</span> <span class="mi">1</span><span class="nx">m</span><span class="p">,</span> <span class="mi">5</span><span class="nx">s</span>
+<span class="s1">'{Minutes} and {seconds}'</span> <span class="o">--&gt;</span> <span class="mi">1</span> <span class="nx">minute</span> <span class="nx">and</span> <span class="mi">5</span> <span class="nx">seconds</span>
+<span class="s1">'{Greatest} ago'</span> <span class="o">--&gt;</span> <span class="mi">1</span> <span class="nx">minute</span> <span class="nx">ago</span>
+</pre>
+</div>
+
+
+<p>The full documentation of the syntax is at <a href="http://code.google.com/p/jintervals/wiki/Documentation">http://code.google.com/p/jintervals/wiki/Documentation</a>.</p>
+
+<h3>Custom formatter</h3>
+
+<p>A formatter function can be supplied as <code>formatter</code> in options. It receives <code>milliseconds</code> and 
+<code>options</code> and must return a string.</p>
+
+<h2>Licence</h2>
+
+<p>Copyright (c) 2012 Rob Cowie. Licensed under the MIT license.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/robcowie">robcowie</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+    
+  </body>
+</html>
