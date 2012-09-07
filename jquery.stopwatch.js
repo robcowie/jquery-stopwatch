@@ -47,7 +47,6 @@
             };
             
             // if (options) { $.extend(settings, options); }
-            var settings = $.extend({}, defaults, options);
             
             return this.each(function() {
                 var $this = $(this),
@@ -56,6 +55,7 @@
                 // If the plugin hasn't been initialized yet
                 if (!data) {
                     // Setup the stopwatch data
+                    var settings = $.extend({}, defaults, options);
                     data = settings;
                     data.active = false;
                     data.target = $this;
